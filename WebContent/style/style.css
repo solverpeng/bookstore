@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+/*登录注册页面样式*/
+table {
+	margin: auto;
+	text-align: center;
+	border: 1px black solid;
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px black solid;
+	padding: 5px;
+	
+}
+	
+/*主页样式*/
+div{
+	margin: auto;
+	border: 1px black solid;
+}
+
+#header {
+	width: 800px;
+	height: 100px;
+	background-color: #bfa;
+}
+
+#main_div{
+	width: 800px;
+	height: 600px;
+}
+
+#welcome {
+	margin: 0px auto 0px auto;
+	text-align: center;
+}
+
+#left_div{
+	width: 200px;
+	height: 100%;
+	float: left;
+	border: none;
+	border-right: 1px black solid;
+}
+
+#right_div {
+	width: 599px;
+	height: 100%;
+	float: left;
+	border: none;
+}
+
+#login{
+	border: none;
+	margin-top:15px;
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+	border: none;
+}
+
+a{
+	text-decoration: none;
+}

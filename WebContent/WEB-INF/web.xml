@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>bookstore</display-name>
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>com.nucsoft.bookstore.servlet.client.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/client/UserServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ClientServlet</servlet-name>
+		<servlet-class>com.nucsoft.bookstore.servlet.client.ClientServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClientServlet</servlet-name>
+		<url-pattern>/client/ClientServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CategoryServlet</servlet-name>
+		<servlet-class>com.nucsoft.bookstore.servlet.manager.CategoryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CategoryServlet</servlet-name>
+		<url-pattern>/manager/CategoryServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BookServlet</servlet-name>
+		<servlet-class>com.nucsoft.bookstore.servlet.manager.BookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookServlet</servlet-name>
+		<url-pattern>/manager/BookServlet</url-pattern>
+	</servlet-mapping>
+</web-app>
