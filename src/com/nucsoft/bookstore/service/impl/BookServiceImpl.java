@@ -6,6 +6,7 @@ import com.nucsoft.bookstore.bean.Book;
 import com.nucsoft.bookstore.dao.impl.BookDaoImpl;
 import com.nucsoft.bookstore.dao.inter.BookDao;
 import com.nucsoft.bookstore.service.inter.BookService;
+import com.nucsoft.bookstore.special.Page;
 
 public class BookServiceImpl implements BookService {
 	private BookDao bookDao = new BookDaoImpl();
@@ -33,6 +34,15 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void delete(String id) {
 		bookDao.delete(id);
+	}
+
+	@Override
+	public Page<Book> getPage(String pageNoStr) {
+		int totalRcord = bookDao.getTotalRecord();
+		Page<Book> page = new Page<Book>(pageNoStr, totalRcord);
+		List<Book> list = bookDao.getPageList(page.getPageNo(), Page.PAGE_SIZE);
+		page.setList(list);
+		return page;
 	}
 
 }

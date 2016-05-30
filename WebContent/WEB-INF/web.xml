@@ -23,6 +23,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>BookClinetServlet</servlet-name>
+		<servlet-class>com.nucsoft.bookstore.servlet.client.BookClinetServlet</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookClinetServlet</servlet-name>	
+		<url-pattern>/client/BookClientServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>CategoryServlet</servlet-name>
 		<servlet-class>com.nucsoft.bookstore.servlet.manager.CategoryServlet</servlet-class>
 	</servlet>

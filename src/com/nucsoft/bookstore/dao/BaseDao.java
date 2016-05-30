@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.nucsoft.bookstore.utils.JDBCUtils;
 
@@ -73,6 +74,19 @@ public abstract class BaseDao<T> {
 		}
 
 		JDBCUtils.realseResources(connection, null, null);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <V> V getSingleValue(String sql, Object...params) {
+		V v = null;
+		Connection connection = JDBCUtils.getConnection();
+		try {
+			v = (V) queryRunner.query(connection, sql, new ScalarHandler(), params);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		JDBCUtils.realseResources(connection, null, null);
+		return v;
 	}
 
 }

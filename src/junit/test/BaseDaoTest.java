@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.nucsoft.bookstore.bean.Book;
 import com.nucsoft.bookstore.bean.User;
+import com.nucsoft.bookstore.dao.impl.BookDaoImpl;
 import com.nucsoft.bookstore.dao.impl.UserDaoImpl;
+import com.nucsoft.bookstore.dao.inter.BookDao;
 
 public class BaseDaoTest {
 	

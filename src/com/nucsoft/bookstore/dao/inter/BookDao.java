@@ -14,4 +14,8 @@ public interface BookDao {
 	void update(Book book);
 	
 	void delete(String id);
+	
+	int getTotalRecord();
+	
+	List<Book> getPageList(int pageNo, int pageSize);
 }

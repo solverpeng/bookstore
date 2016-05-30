@@ -28,7 +28,7 @@
 			<a href="manager/manager.jsp">进入后台</a> <br /><br />
 		</div>
 		<div id="right_div">
-			<iframe src="client/default.html" name="myIframe"></iframe>
+			<iframe src="client/BookClientServlet?method=getPage" name="myIframe"></iframe>
 		</div>
 	</div>
 </body>

@@ -1,4 +1,19 @@
 @CHARSET "UTF-8";
+.shorInput {
+	width: 30px;
+	border: 1px solid black;
+}
+
+.centerId {
+	text-align: center;
+}
+
+.bookImg {
+	border: 1px solid black;
+	width: 130px;
+	height: 130px;
+}
+
 /*登录注册页面样式*/
 table {
 	margin: auto;

@@ -25,7 +25,7 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 	@Override
 	public void save(Book book) {
 		String sql = "insert into book values(null, ?, ?, ?, ?, ?, ?, ?)";
-		this.commonUpdate(sql, book.getBookName(), book.getAuthor(), book.getPrice(), book.getStoreNum(), 
+		this.commonUpdate(sql, book.getBookName(), book.getAuthor(), book.getPrice(), book.getStoreNum(),
 				book.getSalseAmount(), book.getImgPath(), book.getCategoryId());
 	}
 
@@ -33,7 +33,7 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 	public void update(Book book) {
 		String sql = "update book set book_name = ?, author = ?, price = ?, store_num = ?, salse_amount = ?, "
 				+ "img_path = ?, category_id = ? where book_id = ?";
-		this.commonUpdate(sql, book.getBookName(), book.getAuthor(), book.getPrice(), book.getStoreNum(), 
+		this.commonUpdate(sql, book.getBookName(), book.getAuthor(), book.getPrice(), book.getStoreNum(),
 				book.getSalseAmount(), book.getImgPath(), book.getCategoryId(), book.getBookId());
 	}
 
@@ -41,6 +41,20 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 	public void delete(String id) {
 		String sql = "delete from book where book_id = ?";
 		this.commonUpdate(sql, id);
+	}
+
+	@Override
+	public int getTotalRecord() {
+		String sql = "select count(*) from book";
+		long record = this.getSingleValue(sql);
+		return (int) record;
+	}
+
+	@Override
+	public List<Book> getPageList(int pageNo, int pageSize) {
+		String sql = "select book_id bookId, book_name bookName, author, price, store_num storeNum, "
+				+ "salse_amount salseAmount, img_path imgPath, category_id categoryId from book limit ?, ?";
+		return this.getBeanList(sql, (pageNo - 1)*pageSize , pageSize);
 	}
 
 }

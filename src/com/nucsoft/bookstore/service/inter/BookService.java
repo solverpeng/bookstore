@@ -3,6 +3,7 @@ package com.nucsoft.bookstore.service.inter;
 import java.util.List;
 
 import com.nucsoft.bookstore.bean.Book;
+import com.nucsoft.bookstore.special.Page;
 
 public interface BookService {
 	List<Book> getList();
@@ -14,4 +15,6 @@ public interface BookService {
 	void update(Book book);
 	
 	void delete(String id);
+	
+	Page<Book> getPage(String pageNoStr);
 }
