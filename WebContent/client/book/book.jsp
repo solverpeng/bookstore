@@ -19,7 +19,6 @@
 </script>
 </head>
 <body>
-	${book.bookId }
 	<img class="bookImg" src="${book.imgPath }"/> <br /><br />
 	书名：${book.bookName }<br />
 	作者：${book.author }	<br />

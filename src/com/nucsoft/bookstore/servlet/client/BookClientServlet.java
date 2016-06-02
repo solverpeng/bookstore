@@ -1,8 +1,10 @@
 package com.nucsoft.bookstore.servlet.client;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,6 +24,12 @@ public class BookClientServlet extends BaseServlet {
 	protected void getBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String bookId = req.getParameter("bookId");
 		Book book = bookService.getById(bookId);
+	
+		//将当前访问的Book对象添加到浏览记录中
+		// 1.创建Cookie对象
+		Cookie cookie = new Cookie("book_" + book.getBookId(), URLEncoder.encode(book.getBookName(), "UTF-8"));
+		// 2.回送Cookie
+		resp.addCookie(cookie);
 		WebUtil.sendData(req, resp, "book", book, "/client/book/book.jsp");
 	}
 
