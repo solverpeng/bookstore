@@ -21,7 +21,7 @@
 			<h3>全部分类</h3>
 			<c:if test="${!empty categoryList }">
 				<c:forEach items="${categoryList }" var="category">
-					<a href="#">${category.categoryName }</a> <br /><br />
+					<a href="client/BookClientServlet?method=getPage&categoryId=${category.categoryId }&categoryName=${category.categoryName}" target="myIframe">${category.categoryName }</a> <br /><br />
 				</c:forEach>	
 			</c:if>
 			<br><br>

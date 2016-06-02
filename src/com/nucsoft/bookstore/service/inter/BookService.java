@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.nucsoft.bookstore.bean.Book;
 import com.nucsoft.bookstore.special.Page;
+import com.nucsoft.bookstore.special.PageCondition;
 
 public interface BookService {
 	List<Book> getList();
@@ -17,4 +18,6 @@ public interface BookService {
 	void delete(String id);
 	
 	Page<Book> getPage(String pageNoStr);
+	
+	Page<Book> getPage(PageCondition pageCondition);
 }

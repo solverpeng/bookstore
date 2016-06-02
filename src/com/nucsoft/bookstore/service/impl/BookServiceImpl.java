@@ -7,6 +7,7 @@ import com.nucsoft.bookstore.dao.impl.BookDaoImpl;
 import com.nucsoft.bookstore.dao.inter.BookDao;
 import com.nucsoft.bookstore.service.inter.BookService;
 import com.nucsoft.bookstore.special.Page;
+import com.nucsoft.bookstore.special.PageCondition;
 
 public class BookServiceImpl implements BookService {
 	private BookDao bookDao = new BookDaoImpl();
@@ -41,6 +42,15 @@ public class BookServiceImpl implements BookService {
 		int totalRcord = bookDao.getTotalRecord();
 		Page<Book> page = new Page<Book>(pageNoStr, totalRcord);
 		List<Book> list = bookDao.getPageList(page.getPageNo(), Page.PAGE_SIZE);
+		page.setList(list);
+		return page;
+	}
+
+	@Override
+	public Page<Book> getPage(PageCondition pageCondition) {
+		int totalRcord = bookDao.getTotalRecord(pageCondition);
+		Page<Book> page = new Page<Book>(pageCondition.getPageNoStr(), totalRcord);
+		List<Book> list = bookDao.getPageList(pageCondition, page.getPageNo(), Page.PAGE_SIZE);
 		page.setList(list);
 		return page;
 	}

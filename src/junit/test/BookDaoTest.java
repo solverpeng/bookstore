@@ -7,9 +7,31 @@ import org.junit.Test;
 import com.nucsoft.bookstore.bean.Book;
 import com.nucsoft.bookstore.dao.impl.BookDaoImpl;
 import com.nucsoft.bookstore.dao.inter.BookDao;
+import com.nucsoft.bookstore.special.PageCondition;
 
 public class BookDaoTest {
 	private BookDao bookDao = new BookDaoImpl();
+	
+	@Test
+	public void testPageCondition2() {
+		PageCondition pageCondition = new PageCondition();
+		pageCondition.setCategoryId(7);
+		pageCondition.setMinPrice(100);
+		pageCondition.setMaxPrice(101);
+		List<Book> pageList = bookDao.getPageList(pageCondition, 2, 3);
+		System.out.println(pageList);
+	}
+	
+	@Test
+	public void testPageCondition() {
+		PageCondition pageCondition = new PageCondition();
+		pageCondition.setCategoryId(7);
+		pageCondition.setMinPrice(100);
+		pageCondition.setMaxPrice(101);
+		int totalRecord = bookDao.getTotalRecord(pageCondition);
+		System.out.println(totalRecord);
+		
+	}
 	
 	@Test
 	public void testGetBookPageList() {

@@ -5,6 +5,7 @@ import java.util.List;
 import com.nucsoft.bookstore.bean.Book;
 import com.nucsoft.bookstore.dao.BaseDao;
 import com.nucsoft.bookstore.dao.inter.BookDao;
+import com.nucsoft.bookstore.special.PageCondition;
 
 public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 
@@ -55,6 +56,28 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 		String sql = "select book_id bookId, book_name bookName, author, price, store_num storeNum, "
 				+ "salse_amount salseAmount, img_path imgPath, category_id categoryId from book limit ?, ?";
 		return this.getBeanList(sql, (pageNo - 1)*pageSize , pageSize);
+	}
+
+	@Override
+	public int getTotalRecord(PageCondition pageCondition) {
+		String sql = "select count(*) from book where price <= ? and price >= ? ";
+		if(pageCondition.getCategoryId() != null) {
+			sql += "and category_id =" + pageCondition.getCategoryId();
+		}
+		long record = this.getSingleValue(sql, pageCondition.getMaxPrice(), pageCondition.getMinPrice());
+		return (int) record;
+	}
+
+	@Override
+	public List<Book> getPageList(PageCondition pageCondition, int pageNo, int pageSize) {
+		String sql = "select book_id bookId, book_name bookName, author, price, store_num storeNum, "
+				+ "salse_amount salseAmount, img_path imgPath, category_id categoryId from book "
+				+ "where price <= ? and price >= ? ";
+		if(pageCondition.getCategoryId() != null) {
+			sql += "and category_id = " + pageCondition.getCategoryId();
+		}
+		sql += " limit ?, ?";
+		return this.getBeanList(sql, pageCondition.getMaxPrice(), pageCondition.getMinPrice(),(pageNo - 1)*pageSize , pageSize);
 	}
 
 }

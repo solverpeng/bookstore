@@ -24,7 +24,7 @@
 	
 	<servlet>
 		<servlet-name>BookClinetServlet</servlet-name>
-		<servlet-class>com.nucsoft.bookstore.servlet.client.BookClinetServlet</servlet-class>	
+		<servlet-class>com.nucsoft.bookstore.servlet.client.BookClientServlet</servlet-class>	
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BookClinetServlet</servlet-name>	
