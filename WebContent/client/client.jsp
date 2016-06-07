@@ -13,7 +13,12 @@
 	<div id="header">
 		<h1 id="welcome">网上书城</h1>
 		<div id="login">
-			<a href="client/user/login.jsp" target="myIframe">登陆</a>|<a href="client/user/regist.jsp" target="myIframe">注册</a>
+			<c:if test="${empty sessionScope.loginUser }">
+				<a href="client/user/login.jsp" target="myIframe">登陆</a>|<a href="client/user/regist.jsp" target="myIframe">注册</a>
+			</c:if>
+			<c:if test="${!empty sessionScope.loginUser }">
+				欢迎您,${sessionScope.loginUser.userName }<a href="client/UserServlet?method=logout">退出</a>	
+			</c:if>
 		</div>
 	</div>
 	<div id="main_div">
@@ -24,6 +29,8 @@
 					<a href="client/BookClientServlet?method=getPage&categoryId=${category.categoryId }&categoryName=${category.categoryName}" target="myIframe">${category.categoryName }</a> <br /><br />
 				</c:forEach>	
 			</c:if>
+			<br><br>
+			<a href="client/BookClientServlet?method=showHistoryList" target="myIframe">查看浏览记录</a> 
 			<br><br>
 			<a href="manager/manager.jsp">进入后台</a> <br /><br />
 		</div>

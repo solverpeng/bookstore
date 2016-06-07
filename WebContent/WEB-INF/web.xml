@@ -48,4 +48,14 @@
 		<servlet-name>BookServlet</servlet-name>
 		<url-pattern>/manager/BookServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ValidateColorServlet</servlet-name>
+		<servlet-class>com.nucsoft.bookstore.servlet.client.ValidateColorServlet</servlet-class>	
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ValidateColorServlet</servlet-name>	
+		<url-pattern>/client/ValidateColorServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

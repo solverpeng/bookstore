@@ -13,7 +13,8 @@
 	window.onload = function(){
 		var backEle = document.getElementById("back");
 		backEle.onclick = function() {
-			window.history.back();	
+			//window.history.back();
+			window.location.href="<%=request.getHeader("Referer") %>";
 		}
 	};
 </script>
@@ -24,6 +25,6 @@
 	作者：${book.author }	<br />
 	价格：${book.price }<br />	
 	销量：${book.salseAmount }<br />
-	<button id="back">返回</button>
+	<button id="back">返回上一页</button>
 </body>
 </html>
