@@ -39,7 +39,20 @@ table, td {
 </head>
 <body>
 
-	<div class="centerTd">您的购物车中还没有商品</div>
+	<div class="centerTd">
+		<c:choose>
+			<c:when test="${!empty message}">
+				${message}
+			</c:when>
+			<c:when test="${!empty sessionScope.cart && !sessionScope.cart.cartEmpty}">
+				您的购物车中有${sessionScope.cart.totalCount}件商品
+			</c:when>
+			<c:otherwise>
+				您的购物车中还没有商品
+			</c:otherwise>
+		</c:choose>
+	</div>
+
 	<div class="centerTd">
 		<form action="client/BookClientServlet?method=getPage" method="post">
 			价格 <input type="hidden" name="categoryId"
@@ -66,8 +79,8 @@ table, td {
 					<td>书名：<a
 						href="client/BookClientServlet?method=getBook&bookId=${book.bookId }">${book.bookName }</a><br />
 						作者：${book.author }<br /> 售价：${book.price }<br />
-						库存：${book.storeNum }<br /> 销量：${book.salseAmount }<br /> <a
-						href="#">加入购物车</a>
+						库存：${book.storeNum }<br /> 销量：${book.salseAmount }<br />
+						<a href="client/CartServlet?method=add2Cart&bookId=${book.bookId}">加入购物车</a>
 					</td>
 				</tr>
 			</c:forEach>

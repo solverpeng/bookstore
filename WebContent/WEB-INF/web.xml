@@ -58,4 +58,13 @@
 		<servlet-name>ValidateColorServlet</servlet-name>	
 		<url-pattern>/client/ValidateColorServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CartServlet</servlet-name>
+		<servlet-class>com.nucsoft.bookstore.servlet.client.CartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CartServlet</servlet-name>
+		<url-pattern>/client/CartServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
