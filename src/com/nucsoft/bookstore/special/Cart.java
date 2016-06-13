@@ -59,7 +59,7 @@ public class Cart {
         int count = 0;
         Collection<CartItem> values = itemMap.values();
         for(CartItem cartItem : values) {
-            count = cartItem.getCount();
+            count += cartItem.getCount();
         }
         return count;
     }

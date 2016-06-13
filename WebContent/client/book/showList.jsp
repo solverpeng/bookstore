@@ -80,7 +80,7 @@ table, td {
 						href="client/BookClientServlet?method=getBook&bookId=${book.bookId }">${book.bookName }</a><br />
 						作者：${book.author }<br /> 售价：${book.price }<br />
 						库存：${book.storeNum }<br /> 销量：${book.salseAmount }<br />
-						<a href="client/CartServlet?method=add2Cart&bookId=${book.bookId}">加入购物车</a>
+						<a href="client/CartServlet?method=add2Cart&bookId=${book.bookId}${paramValue}&pageNoStr=${page.pageNo }">加入购物车</a>
 					</td>
 				</tr>
 			</c:forEach>
