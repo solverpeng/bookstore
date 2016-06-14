@@ -74,4 +74,7 @@ public class Cart {
         return amount;
     }
 
+    public Map<Integer, CartItem> getItemMap() {
+        return itemMap;
+    }
 }

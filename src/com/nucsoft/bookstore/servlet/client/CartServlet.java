@@ -18,6 +18,31 @@ import java.io.IOException;
  */
 public class CartServlet extends BaseServlet{
     private BookService bookService = new BookServiceImpl();
+
+    // 删除购物项
+    protected void removeCartItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String bookId = req.getParameter("bookId");
+        HttpSession session = req.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        if(cart != null) {
+            cart.delItem(bookId);
+        }
+        req.getRequestDispatcher("/client/book/cartUI.jsp").forward(req, resp);
+
+    }
+
+    // 清空购物车
+    protected void clearCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        Cart cart = (Cart) session.getAttribute("cart");
+
+        if(cart != null) {
+            cart.clearCart();
+        }
+        req.getRequestDispatcher("/client/book/cartUI.jsp").forward(req, resp);
+    }
+
     // 添加到购物车
     protected void add2Cart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String bookId = req.getParameter("bookId");

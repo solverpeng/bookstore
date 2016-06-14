@@ -20,6 +20,9 @@
 				欢迎您,${sessionScope.loginUser.userName }<a href="client/UserServlet?method=logout">退出</a>	
 			</c:if>
 		</div>
+		<div id="toCart">
+			<a href="client/book/cartUI.jsp" target="myIframe">查看购物车</a>
+		</div>
 	</div>
 	<div id="main_div">
 		<div id="left_div">

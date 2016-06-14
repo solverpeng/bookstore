@@ -4,6 +4,11 @@
 	border: 1px solid black;
 }
 
+#toCart {
+	border : none;
+	text-align: right;
+}
+
 .centerId {
 	text-align: center;
 }
